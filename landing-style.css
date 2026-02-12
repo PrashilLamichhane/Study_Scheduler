@@ -40,19 +40,52 @@ body {
     color: white;
 }
 
+/* From Uiverse.io by Creatlydev */ 
 .nav-login {
-    padding: 10px 25px;
-    background: white;
-    color: #667eea;
+    line-height: 1;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
+    padding: 0.8em 3em;
+    padding-right: 3.25em;
+    color: #fff;
+    border: 0px solid transparent;
+    font-weight: 1000;
+    border-radius: 2em;
+    font-size: 1.1rem;
+    box-shadow: 0 0.7em 1.5em -0.5em hsla(251, 21%, 47%, 0.745);
+    transition: transform 0.3s;
     text-decoration: none;
-    border-radius: 25px;
-    font-weight: 600;
-    transition: all 0.3s;
+    background: linear-gradient(
+        90deg,
+        rgb(68, 46, 193) 0%,
+        rgb(112, 97, 229) 100%
+    );
+}
+
+.button__icon {
+    width: 1.5em;
+    height: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+.button__text {
+    display: flex;
+    align-items: center;
 }
 
 .nav-login:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    transform: scale(0.95);
+    box-shadow: 0 0.5em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
+}
+
+.nav-login:active {
+    transform: scale(0.92);
+    box-shadow: 0 0.5em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
 }
 
 /* Hero Section */
@@ -203,11 +236,12 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1;
-    transition: .7s 1.2s;
+    transition: 0.6s 0s;
     transform: translate(-50%, -50%);
 }
 
 .button-card:hover .slide.slide1 {
+    transition: 0.6s 0.2s;
     transform: translate(100%, -50%);
     opacity: 0;
 }
@@ -218,7 +252,7 @@ body {
     align-items: center;
     padding: 20px 30px;
     box-sizing: border-box;
-    transition: .7s 1.2s;
+    transition: .7s 0s;
     transform: translate(-150%, -50%);
     opacity: 0;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
@@ -229,6 +263,7 @@ body {
 }
 
 .button-card:hover .slide.slide2 {
+    transition: .7s 0.2s;
     opacity: 1;
     transform: translate(-50%, -50%);
 }
