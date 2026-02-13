@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #d87676;
@@ -19,25 +23,171 @@ body {
 }
 
 /* Navbar */
-.navbar {
+.nav {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    line-height: 80px;
+    text-align: center;
+    z-index: 1000;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    transition: all 0.5s ease;
+}
+
+.nav.affix {
+    height: 60px;
+    line-height: 60px;
+    background-color: rgba(138, 147, 196, 0.8);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 10px;
-    position: fixed;
+}
+
+.nav div.logo {
+    width: 300px;
+    height: 80px;
+    display: inline;
+}
+
+.nav.affix div.logo {
+    height: 60px;
+    line-height: 60px;
+}
+
+.nav div.logo a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 80px;
+}
+
+.nav.affix div.logo a {
+    line-height: 60px;
+}
+
+.nav div.main_list {
+    height: 80px;
+    float: right;
+}
+
+.nav.affix div.main_list {
+    height: 60px;
+}
+
+.nav div.main_list ul {
     width: 100%;
-    top: 0;
-    z-index: 1000;
-   
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid rgba(206, 125, 125, 0.3);
+    height: 80px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav.affix div.main_list ul {
+    height: 60px;
+}
+
+.nav div.main_list ul li {
+    width: auto;
+    height: 80px;
+    padding: 0;
+    padding-right: 2rem;
+}
+
+.nav.affix div.main_list ul li {
+    height: 60px;
+}
+
+.nav div.main_list ul li a {
+    text-decoration: none;
+    color: #fff;
+    line-height: 80px;
+    font-size: 1.2rem;
+    font-weight: 500;
     transition: all 0.3s ease;
+}
+
+.nav.affix div.main_list ul li a {
+    line-height: 60px;
+}
+
+.nav div.main_list ul li a:hover {
+    color: #eeedf1;
+    text-decoration: none;
+}
+.nav div.main_list ul li  .main_list_items:hover {
+    color: #eeedf1;
+    text-decoration: underline;
+}
+
+.nav-login-link {
+    padding: 8px 30px;
+    background: linear-gradient(90deg, rgb(72, 50, 195) 0%, rgb(112, 97, 229) 100%);
+    border-radius: 25px;
+    line-height: 1.5 !important;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.nav-login-link:hover {
+    transform: scale(0.95);
+    box-shadow: 0 0.5em 1.5em -0.5em hsla(0, 6%, 93%, 0.745);
+}
+
+/* Hamburger Menu */
+.navTrigger {
+    display: none;
+}
+
+.navTrigger i {
+    background-color: #fff;
+    border-radius: 2px;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+}
+
+.navTrigger i:nth-child(1) {
+    animation: outT 0.8s backwards;
+    animation-direction: reverse;
+}
+
+.navTrigger i:nth-child(2) {
+    margin: 5px 0;
+    animation: outM 0.8s backwards;
+    animation-direction: reverse;
+}
+
+.navTrigger i:nth-child(3) {
+    animation: outBtm 0.8s backwards;
+    animation-direction: reverse;
+}
+
+.navTrigger.active i:nth-child(1) {
+    animation: inT 0.8s forwards;
+}
+
+.navTrigger.active i:nth-child(2) {
+    animation: inM 0.8s forwards;
+}
+
+.navTrigger.active i:nth-child(3) {
+    animation: inBtm 0.8s forwards;
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: white;
+    color: rgb(222, 31, 31);
 }
 
 /* From Uiverse.io by Creatlydev */ 
@@ -137,7 +287,6 @@ body {
   color: white;
   gap: 12px;
   border-radius: 80px;
-  cursor: pointer;
   text-decoration: none;
   transition: all 0.3s;
   white-space: nowrap;
@@ -165,6 +314,7 @@ body {
 .button:hover {
   border: 8px solid #b1d8ff;
   background-color: #1b7aff;
+  cursor: default;
 }
 .button:active {
   border: 5px solid #c0dfff;
@@ -383,10 +533,53 @@ body {
     color: #414141;
 }
 
+/* Hamburger Animations */
+@keyframes inM {
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(45deg); }
+}
+
+@keyframes outM {
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(45deg); }
+}
+
+@keyframes inT {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(9px) rotate(0deg); }
+    100% { transform: translateY(9px) rotate(135deg); }
+}
+
+@keyframes outT {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(9px) rotate(0deg); }
+    100% { transform: translateY(9px) rotate(135deg); }
+}
+
+@keyframes inBtm {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-9px) rotate(0deg); }
+    100% { transform: translateY(-9px) rotate(135deg); }
+}
+
+@keyframes outBtm {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-9px) rotate(0deg); }
+    100% { transform: translateY(-9px) rotate(135deg); }
+}
+
 /* Features Section */
 .features {
     padding: 100px 0;
     background: #f8f9fa;
+}
+
+#features {
+    scroll-margin-top: 80px;
+}
+
+#how-it-works {
+    scroll-margin-top: 80px;
 }
 
 .section-title {
@@ -523,7 +716,51 @@ footer p {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+    .navTrigger {
+        display: block;
+    }
+    
+    .nav div.logo {
+        margin-left: 15px;
+    }
+    
+    .nav div.main_list {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+    }
+    
+    .nav div.show_list {
+        height: auto;
+        display: block;
+    }
+    
+    .nav div.main_list ul {
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: rgba(17, 17, 17, 0.98);
+        background-position: center top;
+        padding-top: 80px;
+    }
+    
+    .nav div.main_list ul li {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+    
+    .nav div.main_list ul li a {
+        text-align: center;
+        width: 100%;
+        font-size: 1.5rem;
+        padding: 20px;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -539,10 +776,6 @@ footer p {
     .features-grid,
     .steps {
         grid-template-columns: 1fr;
-    }
-
-    .navbar {
-        padding: 20px;
     }
 
     .cta h2 {

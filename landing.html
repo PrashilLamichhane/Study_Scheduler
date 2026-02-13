@@ -8,15 +8,29 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#">LOGO HALAMLA!!</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a class="main_list_items" href="#features">Features</a></li>
+                    <li><a class="main_list_items" href="#how-it-works">How It Works</a></li>
+                    <li><a href="login.html" class="nav-login-link">Login</a></li>
+                </ul>
+            </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero">
-        <nav class="navbar">
-            <div class="logo">📚 Study Planner</div>
-            <a href="login.html" class="nav-login">
-                
-                <span class="button__text">Login</span>
-            </a>
-        </nav>
 
         <div class="hero-content">
             <h1>Master Your Studies with Smart Planning</h1>
@@ -59,7 +73,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features">
+    <section class="features" id="features">
         <div class="container">
             <h2 class="section-title">Everything You Need to Succeed</h2>
             
@@ -104,7 +118,7 @@
     </section>
 
     <!-- How It Works Section -->
-    <section class="how-it-works">
+    <section class="how-it-works" id="how-it-works">
         <div class="container">
             <h2 class="section-title">How It Works</h2>
             
@@ -145,5 +159,25 @@
             <p>&copy; 2026 Study Planner. Built for students, by students.</p>
         </div>
     </footer>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        // Navbar shrink on scroll
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 50) {
+                $('.nav').addClass('affix');
+            } else {
+                $('.nav').removeClass('affix');
+            }
+        });
+
+        // Mobile menu toggle
+        $('.navTrigger').click(function () {
+            $(this).toggleClass('active');
+            $("#mainListDiv").toggleClass("show_list");
+            $("#mainListDiv").fadeIn();
+        });
+    </script>
 </body>
 </html>
