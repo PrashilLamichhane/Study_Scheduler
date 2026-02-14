@@ -84,11 +84,3 @@ function handleSignup(event) {
     window.location.href = 'index.html';
 }
 
-// Check if user is already logged in
-window.addEventListener('load', () => {
-    const currentUser = localStorage.getItem('currentUser');
-    if (currentUser) {
-        // User is already logged in, redirect to main app
-        window.location.href = 'index.html';
-    }
-});
